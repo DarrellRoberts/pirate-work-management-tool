@@ -5,21 +5,22 @@ interface ScrollProps {
     setCreatedElement: React.Dispatch<React.SetStateAction<React.ReactNode[]>>;
 }
 
-const Scroll: React.FC<ScrollProps> = ({createdElement, setCreatedElement }) => {
+const Scroll: React.FC<ScrollProps> = ({createdElement, setCreatedElement, scrollName}) => {
 const removeScroll = (indexToRemove: number) => {
-    const updatedElements = [...createdElement];
-    updatedElements.splice(indexToRemove, 1);
-    setCreatedElement(updatedElements);
+    // const updatedElements = [...createdElement];
+    let deleted = delete createdElement[indexToRemove]
+    setCreatedElement(createdElement)
 }
 return (
-<div className="bg-scroll flex-row items-end  bg-no-repeat bg-contain h-3/6">
+<div className="bg-scroll flex-col wrap bg-no-repeat bg-cover bg-center h-[400px] w-[300px]">
 <Button
 type="primary"
-className="mt-20 ml-10 bg-red-500"
-onClick={() => removeScroll(createdElement.indexOf(scroll))}
+className="ml-60 mt-20 bg-red-500"
+onClick={removeScroll}
 >
 X
 </Button>
+<h2>{scrollName}</h2>
 </div>
 
 )

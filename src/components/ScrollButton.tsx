@@ -1,14 +1,13 @@
 import { useState } from "react";
-import  { Button } from "antd"
-import Scroll from "./Scroll" 
+import  { Button } from "antd" 
+import ScrollModal from "./ScrollModal";
 
 const ScrollButton: React.FC = () => {
+const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 const [createdElement, setCreatedElement] = useState<React.ReactNode[] >([])
-console.log(createdElement)
+
 const handleButtonClick = () => {
-    const newElement = <Scroll createdElement={createdElement} setCreatedElement={setCreatedElement} />
-    const newArray = [...createdElement, newElement]
-    setCreatedElement(newArray);
+    setIsModalOpen(true);
 }
 
     return (
@@ -20,7 +19,10 @@ const handleButtonClick = () => {
     >
     Add Scroll
     </Button>
+    {isModalOpen ? <ScrollModal isModalOpen = {isModalOpen} setIsModalOpen ={setIsModalOpen} createdElement = {createdElement} setCreatedElement = {setCreatedElement}/> : null}
+    <div className="flex justify-start h-screen">
     {createdElement}
+    </div>
     </>
     )
     }

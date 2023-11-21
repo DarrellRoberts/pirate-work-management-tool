@@ -4,7 +4,7 @@ import './App.css'
 
 const App: React.FC = () => {
   return (
-    <div className="bg-ship h-screen bg-no-repeat bg-cover">
+    <div className="bg-ship bg-center h-screen bg-no-repeat bg-cover">
     <ScrollButton/>
     </div>
   )
