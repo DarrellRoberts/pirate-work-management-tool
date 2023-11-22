@@ -12,8 +12,11 @@ const Scroll: React.FC<ScrollProps> = ({createdElement, setCreatedElement, scrol
 const removeScroll = () => {
     const updatedElements = createdElement.filter((_, i) => i !== index);
     setCreatedElement(updatedElements)
+    localStorage.setItem("newArray", JSON.stringify(updatedElements))
 }
-console.log(scrollName);
+
+
+
 return (
 <div className="bg-scroll flex-col wrap bg-no-repeat bg-cover bg-center h-[400px] w-[300px]">
 <Button
