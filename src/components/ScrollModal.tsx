@@ -2,16 +2,15 @@ import { useState, useEffect } from "react";
 import  { Button, Modal, Input } from "antd"
 import Scroll from "./Scroll";
 
-const ScrollModal: React.FC = ({isModalOpen, setIsModalOpen, createdElement, setCreatedElement}) => {
+const ScrollModal: React.FC = ({isModalOpen, setIsModalOpen, createdElement, setCreatedElement }) => {
+
 const [scrollName, setScrollName] = useState<string>("")
 
   const handleOk = () => {
     setIsModalOpen(false);
-    const newElement = 
-    <Scroll
-    createdElement={createdElement} 
-    setCreatedElement={setCreatedElement} 
-    scrollName={scrollName} 
+    const newElement =
+    <Scroll 
+    scrollName={scrollName}
     />
     const newArray = [...createdElement, newElement]
     setCreatedElement(newArray);
@@ -20,7 +19,7 @@ const [scrollName, setScrollName] = useState<string>("")
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
+console.log(scrollName)
 return(
 <>
 <Modal 
