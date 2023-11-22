@@ -14,6 +14,7 @@ const [scrollName, setScrollName] = useState<string>("")
     />
     const newArray = [...createdElement, newElement]
     setCreatedElement(newArray);
+    localStorage.setItem("newArray", JSON.stringify(newArray))
     console.log(newArray);
   };
   const handleCancel = () => {
@@ -28,10 +29,10 @@ open={isModalOpen}
 onOk={handleOk} 
 onCancel={handleCancel}>
 
-        <Input 
-        value={scrollName}
-        onChange={(e) => setScrollName(e.target.value)}
-        />
+    <Input 
+      value={scrollName}
+      onChange={(e) => setScrollName(e.target.value)}
+    />
 
 </Modal>
 </>

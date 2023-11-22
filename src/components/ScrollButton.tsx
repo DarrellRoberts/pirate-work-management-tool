@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import  { Button } from "antd" 
 import ScrollModal from "./ScrollModal";
 import Scroll from "./Scroll";
@@ -13,6 +13,10 @@ const handleButtonClick = () => {
     setIsModalOpen(true);
 }
 
+useEffect(() => {
+    const storedCons = JSON.parse(localStorage.getItem("newArray") || "[]");
+    setCreatedElement(storedCons);
+},[])
     return (
     <>
     <Button
