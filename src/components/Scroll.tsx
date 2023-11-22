@@ -3,14 +3,17 @@ import  { Button } from "antd"
 interface ScrollProps {
     createdElement: React.ReactNode[];
     setCreatedElement: React.Dispatch<React.SetStateAction<React.ReactNode[]>>;
+    scrollName: string;
+    index: number;
 }
 
-const Scroll: React.FC<ScrollProps> = ({createdElement, setCreatedElement, scrollName}) => {
-const removeScroll = (indexToRemove: number) => {
-    // const updatedElements = [...createdElement];
-    let deleted = delete createdElement[indexToRemove]
-    setCreatedElement(createdElement)
+const Scroll: React.FC<ScrollProps> = ({createdElement, setCreatedElement, scrollName, index}) => {
+
+const removeScroll = () => {
+    const updatedElements = createdElement.filter((_, i) => i !== index);
+    setCreatedElement(updatedElements)
 }
+console.log(scrollName);
 return (
 <div className="bg-scroll flex-col wrap bg-no-repeat bg-cover bg-center h-[400px] w-[300px]">
 <Button
@@ -20,7 +23,7 @@ onClick={removeScroll}
 >
 X
 </Button>
-<h2>{scrollName}</h2>
+<h1>{scrollName}</h1>
 </div>
 
 )
