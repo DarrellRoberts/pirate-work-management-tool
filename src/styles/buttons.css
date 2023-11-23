@@ -1,0 +1,3 @@
+:where(.css-dev-only-do-not-override-nllxry).ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover {
+    background-color: red;
+    }

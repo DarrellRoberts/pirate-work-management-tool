@@ -12,6 +12,11 @@ export default {
       },
     },
   },
+  variants: {
+    extend: {
+      backgroundColor: ["responsive", "hover", "focus", "active", "group-hover", "group-focus"],
+    },
+  },
   plugins: [],
 }
 
