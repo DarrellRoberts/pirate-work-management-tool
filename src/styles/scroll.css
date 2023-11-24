@@ -1,0 +1,7 @@
+.scrollTitle {
+    font-family: var(--mainFont);
+    text-align: center;
+    font-size: 2rem;
+    text-decoration: underline;
+    cursor: pointer;
+}

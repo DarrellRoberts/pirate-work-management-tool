@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family:'Battlesbridge';
+    src: url("/BattlesbridgeDemo-AL126.ttf");
+    font-weight: normal;
+    font-style: normal;
+    }
+
+:root {
+    --mainFont:'Battlesbridge';
+}
