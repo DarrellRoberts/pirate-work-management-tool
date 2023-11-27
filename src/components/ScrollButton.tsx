@@ -33,7 +33,7 @@ useEffect(() => {
     createdElement = {createdElement} 
     setCreatedElement = {setCreatedElement} 
     /> : null}
-    <div className="flex justify-start h-screen">
+    <div className="flex justify-start">
     {createdElement.map((con, index: number) => (
     <Scroll 
     index={index} 
