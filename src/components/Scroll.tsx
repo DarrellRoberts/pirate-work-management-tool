@@ -2,7 +2,7 @@ import { useState } from "react"
 import  { Button, Input } from "antd"
 import "../styles/buttons.css"
 import "../styles/scroll.css"
-import ScrollModal from "./ScrollModal"
+import ScrollModalEdit from "./ScrollModalEdit"
 
 interface ScrollProps {
     createdElement: React.ReactNode[];
@@ -12,17 +12,17 @@ interface ScrollProps {
 }
 
 const Scroll: React.FC<ScrollProps> = ({createdElement, setCreatedElement, scrollName, index}) => {
-const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+const [isEditModalOpen, setEditIsModalOpen] = useState<boolean>(false);
 
 const removeScroll = () => {
     const updatedElements = createdElement.filter((_, i) => i !== index);
     setCreatedElement(updatedElements)
     localStorage.setItem("newArray", JSON.stringify(updatedElements))
 }
-console.log(scrollName);
+
 const retrieveNames = localStorage.getItem("newArray");
 const scrollNames = JSON.parse(retrieveNames);
-
+console.log(scrollNames);
 return (
 <div className="bg-scroll flex-col bg-no-repeat bg-cover bg-center h-[550px] w-[450px]">
 <Button
@@ -35,15 +35,17 @@ X
 </Button>
 <h2 
 className="scrollTitle"
-onClick={() => setIsModalOpen(true)} 
+onClick={() => setEditIsModalOpen(true)} 
 >{scrollNames[index]}
 </h2>
-{isModalOpen ? 
-    <ScrollModal 
-    isModalOpen = {isModalOpen} 
-    setIsModalOpen ={setIsModalOpen} 
-    createdElement = {createdElement} 
-    setCreatedElement = {setCreatedElement} 
+{isEditModalOpen ? 
+    <ScrollModalEdit 
+    isEditModalOpen = {isEditModalOpen} 
+    setEditIsModalOpen ={setEditIsModalOpen} 
+    scrollNames={scrollNames}
+    createdElement={createdElement}
+    setCreatedElement={setCreatedElement}
+    index={index}
     /> : null}
 </div>
 
