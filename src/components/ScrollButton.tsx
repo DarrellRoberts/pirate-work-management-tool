@@ -5,7 +5,7 @@ import Scroll from "./Scroll";
 
 const ScrollButton: React.FC = () => {
 const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-const [createdElement, setCreatedElement] = useState<React.ReactNode[]>
+const [createdElement, setCreatedElement] = useState<string[]>
 ([])
 
 const handleButtonClick = () => {
