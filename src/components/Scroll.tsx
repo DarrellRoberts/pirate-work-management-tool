@@ -1,8 +1,9 @@
 import { useState } from "react"
-import  { Button, Input } from "antd"
+import  { Button } from "antd"
 import "../styles/buttons.css"
 import "../styles/scroll.css"
 import ScrollModalEdit from "./ScrollModalEdit"
+import ScrollitemAdd from "./Scrollitems/ScrollitemAdd"
 
 interface ScrollProps {
     createdElement: React.ReactNode[];
@@ -13,6 +14,8 @@ interface ScrollProps {
 
 const Scroll: React.FC<ScrollProps> = ({createdElement, setCreatedElement, scrollName, index}) => {
 const [isEditModalOpen, setEditIsModalOpen] = useState<boolean>(false);
+const [itemModal, setItemModal] = useState<boolean>(false)
+const [items, setItems] = useState<string[] | null>([])
 
 const removeScroll = () => {
     const updatedElements = createdElement.filter((_, i) => i !== index);
@@ -20,10 +23,14 @@ const removeScroll = () => {
     localStorage.setItem("newArray", JSON.stringify(updatedElements))
 }
 
-const retrieveNames = localStorage.getItem("newArray");
-const scrollNames = JSON.parse(retrieveNames);
+const retrieveNames  = localStorage.getItem("newArray");
+const scrollNames: string[] = JSON.parse(retrieveNames);
+
+const retrieveItems  = localStorage.getItem("newItems");
+const itemNames: string[] = JSON.parse(retrieveItems);
+
 return (
-<div className="bg-scroll flex-col bg-no-repeat bg-cover bg-center h-[550px] w-[450px]">
+<div className="bg-scroll flex-col items-center bg-no-repeat bg-cover bg-center h-[550px] w-[450px]">
 <Button
 type="primary"
 // className="ml-60 mt-20 bg-black"
@@ -32,11 +39,14 @@ onClick={removeScroll}
 >
 X
 </Button>
+
 <h2 
 className="scrollTitle"
 onClick={() => setEditIsModalOpen(true)} 
->{scrollNames[index]}
+>
+{scrollNames[index]}
 </h2>
+
 {isEditModalOpen ? 
     <ScrollModalEdit 
     isEditModalOpen = {isEditModalOpen} 
@@ -45,6 +55,26 @@ onClick={() => setEditIsModalOpen(true)}
     index={index}
     createdElement={createdElement}
     setCreatedElement={setCreatedElement}
+    /> : null}
+
+    {itemNames.map((item) => (
+        <div className="flex-col">
+        {item}
+        </div>))}
+<Button
+ghost
+type="dashed"
+className="Add"
+onClick={() => setItemModal(true)}
+>
++
+</Button>
+{itemModal ? 
+    <ScrollitemAdd 
+    itemModal={itemModal}
+    setItemModal={setItemModal}
+    items={items}
+    setItems={setItems}
     /> : null}
 </div>
 
