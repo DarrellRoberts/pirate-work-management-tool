@@ -2,21 +2,20 @@ import { useState, useEffect } from "react";
 import  { Button, Modal, Input } from "antd"
 import Scroll from "./Scroll";
 
-const ScrollModalEdit: React.FC = ({isEditModalOpen, setEditIsModalOpen, scrollNames, createdElement, setCreatedElement, index }) => {
+const ScrollModalEdit: React.FC = ({isEditModalOpen, setEditIsModalOpen, scrollNames, index, setCreatedElement }) => {
 
 const [editScrollName, setEditScrollName] = useState<string>(scrollNames[index])
 
   const handleOk = () => {
     setEditIsModalOpen(false);
     const newArray = scrollNames.with(index, editScrollName)
+    setCreatedElement(newArray)
     localStorage.setItem("newArray", JSON.stringify(newArray))
-    console.log(newArray);
   };
   
   const handleCancel = () => {
     setEditIsModalOpen(false);
   };
-console.log(scrollNames)
 
 return(
 <>

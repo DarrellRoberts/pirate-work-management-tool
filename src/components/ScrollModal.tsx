@@ -12,13 +12,11 @@ const [scrollName, setScrollName] = useState<string>("")
     const newArray = [...createdElement, newElement]
     setCreatedElement(newArray);
     localStorage.setItem("newArray", JSON.stringify(newArray))
-    console.log(newArray);
   };
   
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-console.log(scrollName)
 
 return(
 <>

@@ -22,7 +22,6 @@ const removeScroll = () => {
 
 const retrieveNames = localStorage.getItem("newArray");
 const scrollNames = JSON.parse(retrieveNames);
-console.log(scrollNames);
 return (
 <div className="bg-scroll flex-col bg-no-repeat bg-cover bg-center h-[550px] w-[450px]">
 <Button
@@ -43,9 +42,9 @@ onClick={() => setEditIsModalOpen(true)}
     isEditModalOpen = {isEditModalOpen} 
     setEditIsModalOpen ={setEditIsModalOpen} 
     scrollNames={scrollNames}
+    index={index}
     createdElement={createdElement}
     setCreatedElement={setCreatedElement}
-    index={index}
     /> : null}
 </div>
 
