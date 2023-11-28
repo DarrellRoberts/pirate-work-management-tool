@@ -13,8 +13,8 @@
 }
 
 .Add:where(.css-dev-only-do-not-override-nllxry).ant-btn-dashed.ant-btn-background-ghost {
-    margin: 10% 0px 0px 25%;
-    width: 50%;
+    margin: 10% 0px 0px 15%;
+    width: 75%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,8 +25,23 @@
     border-color: black;
 }
 
+.AddText {
+    margin: 10% 0px 0px 15%;
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    font-size: 1.5rem;
+    text-align:center;
+    color: black;
+    border-color: black;
+    border-radius: 20px;
+    border-width: 2px;
+    border-style: solid;
+    font-family: var(--mainFont);
+}
 
-
-/* :where(.css-dev-only-do-not-override-nllxry).ant-btn-primary:not(:disabled):not(.ant-btn-disabled) {
-    background-color: blue;
-    } */
+.AddText .X:where(.css-dev-only-do-not-override-nllxry).ant-btn-primary:not(:disabled):not(.ant-btn-disabled) { 
+    margin: 0px;
+}

@@ -4,6 +4,7 @@ import "../styles/buttons.css"
 import "../styles/scroll.css"
 import ScrollModalEdit from "./ScrollModalEdit"
 import ScrollitemAdd from "./Scrollitems/ScrollitemAdd"
+import ScrollitemRemove from "./Scrollitems/ScrollitemRemove"
 
 interface ScrollProps {
     createdElement: React.ReactNode[];
@@ -26,7 +27,7 @@ const removeScroll = () => {
 const retrieveNames  = localStorage.getItem("newArray");
 const scrollNames: string[] = JSON.parse(retrieveNames);
 
-const retrieveItems  = localStorage.getItem("newItems");
+const retrieveItems  = localStorage.getItem("newItems" + index);
 const itemNames: string[] = JSON.parse(retrieveItems);
 
 return (
@@ -57,10 +58,19 @@ onClick={() => setEditIsModalOpen(true)}
     setCreatedElement={setCreatedElement}
     /> : null}
 
-    {itemNames.map((item) => (
-        <div className="flex-col">
+    {itemNames ? itemNames.map((item, itemIndex: number) => (
+        <div 
+        key={itemIndex}
+        className="AddText">
+        <ScrollitemRemove 
+        itemIndex={itemIndex}
+        itemNames={itemNames}
+        index={index}
+        setItems={setItems}
+        />
         {item}
-        </div>))}
+        </div>))
+    : null}
 <Button
 ghost
 type="dashed"
@@ -75,6 +85,7 @@ onClick={() => setItemModal(true)}
     setItemModal={setItemModal}
     items={items}
     setItems={setItems}
+    index={index}
     /> : null}
 </div>
 
