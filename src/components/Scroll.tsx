@@ -5,6 +5,7 @@ import "../styles/scroll.css"
 import ScrollModalEdit from "./ScrollModalEdit"
 import ScrollitemAdd from "./Scrollitems/ScrollitemAdd"
 import ScrollitemRemove from "./Scrollitems/ScrollitemRemove"
+import ScrollitemEdit from "./Scrollitems/ScrollitemEdit"
 
 interface ScrollProps {
     createdElement: React.ReactNode[];
@@ -18,17 +19,18 @@ const [isEditModalOpen, setEditIsModalOpen] = useState<boolean>(false);
 const [itemModal, setItemModal] = useState<boolean>(false)
 const [items, setItems] = useState<string[] | null>([])
 
-const removeScroll = () => {
-    const updatedElements = createdElement.filter((_, i) => i !== index);
-    setCreatedElement(updatedElements)
-    localStorage.setItem("newArray", JSON.stringify(updatedElements))
-}
-
 const retrieveNames  = localStorage.getItem("newArray");
 const scrollNames: string[] = JSON.parse(retrieveNames);
 
-const retrieveItems  = localStorage.getItem("newItems" + index);
+const retrieveItems  = localStorage.getItem(`${scrollNames[index]}`);
 const itemNames: string[] = JSON.parse(retrieveItems);
+
+const removeScroll = () => {
+    const updatedElements = createdElement.filter((_, i) => i !== index);
+    setCreatedElement(updatedElements)
+    localStorage.removeItem(`${scrollNames[index]}`);
+    localStorage.setItem("newArray", JSON.stringify(updatedElements))
+}
 
 return (
 <div className="bg-scroll flex-col items-center bg-no-repeat bg-cover bg-center h-[550px] w-[450px]">
@@ -50,8 +52,8 @@ onClick={() => setEditIsModalOpen(true)}
 
 {isEditModalOpen ? 
     <ScrollModalEdit 
-    isEditModalOpen = {isEditModalOpen} 
-    setEditIsModalOpen ={setEditIsModalOpen} 
+    isEditModalOpen={isEditModalOpen} 
+    setEditIsModalOpen={setEditIsModalOpen} 
     scrollNames={scrollNames}
     index={index}
     createdElement={createdElement}
@@ -59,17 +61,27 @@ onClick={() => setEditIsModalOpen(true)}
     /> : null}
 
     {itemNames ? itemNames.map((item, itemIndex: number) => (
-        <div 
+        <div
         key={itemIndex}
         className="AddText">
+
         <ScrollitemRemove 
         itemIndex={itemIndex}
         itemNames={itemNames}
         index={index}
         setItems={setItems}
+        scrollNames={scrollNames}
         />
         {item}
-        </div>))
+        <ScrollitemEdit 
+        itemIndex={itemIndex}
+        index={index}
+        itemNames={itemNames}
+        setItems={setItems}
+        />
+
+        </div>
+        ))
     : null}
 <Button
 ghost
@@ -86,6 +98,7 @@ onClick={() => setItemModal(true)}
     items={items}
     setItems={setItems}
     index={index}
+    scrollNames={scrollNames}
     /> : null}
 </div>
 

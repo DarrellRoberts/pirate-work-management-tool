@@ -3,7 +3,7 @@ import  { Modal, Input } from "antd"
 
 const { TextArea } = Input;
 
-const ScrollitemAdd: React.FC = ({itemModal, setItemModal, items, setItems, index}) => {
+const ScrollitemAdd: React.FC = ({itemModal, setItemModal, items, setItems, index, scrollNames}) => {
 
 const [newItem, setNewItem] = useState<string>("");
 
@@ -11,9 +11,7 @@ const [newItem, setNewItem] = useState<string>("");
     setItemModal(false);
     const newItems = [...items, newItem]
     setItems(newItems)
-    localStorage.setItem("newItems" + index, JSON.stringify(newItems))
-    console.log(items);
-    console.log(newItem);
+    localStorage.setItem(`${scrollNames[index]}`, JSON.stringify(newItems))
   };
 
 
