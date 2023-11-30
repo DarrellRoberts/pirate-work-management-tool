@@ -1,4 +1,4 @@
-# Pirate Themed To-Do List
+# Pirate-themed Work Management Tool
 
 A to-do list with a nautical, pirate theme.
 
