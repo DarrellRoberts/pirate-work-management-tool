@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .font-main {
+        font-family: var(--mainFont);
+    }
+}
+
 @font-face {
     font-family:'Battlesbridge';
     src: url("/BattlesbridgeDemo-AL126.ttf");
@@ -16,4 +22,13 @@
 body {
     padding: 0px;
     margin: 0px;
+}
+
+.Pirateh1 {
+    display: inline;
+    font-size: 2rem;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-family: var(--mainFont)
 }

@@ -3,7 +3,7 @@ import  { Modal, Input } from "antd"
 
 const { TextArea } = Input;
 
-const ScrollitemEdit: React.FC = ({itemIndex, index, itemNames, setItems}) => {
+const ScrollitemEdit: React.FC = ({itemIndex, index, itemNames, setItems, scrollNames}) => {
 
 const [isEditItemOpen, setEditIsItemOpen] = useState<boolean>(false);
 const [newItem, setNewItem] = useState<string>(itemNames[itemIndex]);
@@ -12,7 +12,7 @@ const [newItem, setNewItem] = useState<string>(itemNames[itemIndex]);
     setEditIsItemOpen(false);
     const newArray = itemNames.with(itemIndex, newItem)
     setItems(newArray)
-    localStorage.setItem("newItems" + index, JSON.stringify(newArray))
+    localStorage.setItem(`${scrollNames[index]}`, JSON.stringify(newArray))
   };
 
 
@@ -39,7 +39,7 @@ onCancel={handleCancel}
 <TextArea 
       value={newItem}
       onChange={(e) => setNewItem(e.target.value)}
-      maxLength="15"
+      maxLength="30"
 />
 
 </Modal>
