@@ -2,7 +2,7 @@
 
 A to-do list with a nautical, pirate theme.
 
-Made with TypeScript in React.js with Tailwind CSS
+Made with TypeScript and Tailwind CSS in React.ts.
 
 See screenshots below:
 
