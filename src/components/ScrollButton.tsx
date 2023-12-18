@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "antd";
 import ScrollModal from "./ScrollContainers/ScrollModal";
 import Scroll from "./ScrollContainers/Scroll";
+import "../styles/scrollRes.css"
 
 const ScrollButton: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
