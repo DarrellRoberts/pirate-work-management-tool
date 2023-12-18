@@ -51,7 +51,7 @@ const Scroll: React.FC<ScrollProps> = ({
     localStorage.setItem("newArray", JSON.stringify(updatedElements));
   };
   return (
-    <div className="bg-scroll flex-col items-center bg-no-repeat bg-cover bg-center h-[800px] w-[400px] ml-5 mr-5 mt-5">
+    <div className="bg-scroll flex-col items-center bg-no-repeat bg-cover bg-center h-[700px] w-[400px] ml-5 mr-5 mt-5">
       <Button
         type="primary"
         // className="ml-60 mt-20 bg-black"
